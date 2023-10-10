@@ -26,9 +26,9 @@ locals {
       dynamodb_table = local.backend.dynamodb_table
       region         = local.backend.region
 
-      endpoint          = contains(local.backend, "endpoint") ? local.backend.endpoint : null
-      dynamodb_endpoint = contains(local.backend, "dynamodb_endpoint") ? local.backend.dynamodb_endpoint : null
-      sts_endpoint      = contains(local.backend, "sts_endpoint") ? local.backend.sts_endpoint : null
+      endpoint          = contains(keys(local.backend), "endpoint") ? local.backend.endpoint : null
+      dynamodb_endpoint = contains(keys(local.backend), "dynamodb_endpoint") ? local.backend.dynamodb_endpoint : null
+      sts_endpoint      = contains(keys(local.backend), "sts_endpoint") ? local.backend.sts_endpoint : null
 
       # NOTE: component types
       # Privileged components are those that require elevated (root-level) permissions to provision and access their remote state.
